@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHub - ER Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .diagram-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+        .legend h3 {
+            margin-top: 0;
+        }
+        .legend-item {
+            display: inline-block;
+            margin: 5px 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .account { background: #e3f2fd; }
+        .core { background: #e8f5e9; }
+        .service { background: #fff3e0; }
+        .booking { background: #fce4ec; }
+        .techorda { background: #e0f7fa; }
+        .landing { background: #fff8e1; }
+    </style>
+</head>
+<body>
+    <h1>TechHub Database - ER Diagram</h1>
+
+    <div class="legend">
+        <h3>Модули:</h3>
+        <span class="legend-item account">Account - Пользователи</span>
+        <span class="legend-item core">Core - Контент</span>
+        <span class="legend-item service">Service - Услуги</span>
+        <span class="legend-item booking">Booking - Бронирование</span>
+        <span class="legend-item techorda">TechOrda - Образование</span>
+        <span class="legend-item landing">Landing - CMS</span>
+    </div>
+
+    <div class="diagram-container">
+        <div class="mermaid">
+erDiagram
+    %% ===== ACCOUNT MODULE =====
+    account_user {
+        int id PK
+        varchar email
+        varchar phone
+        varchar first_name
+        varchar last_name
+        varchar role
+        boolean is_active
+        int company_id FK
+        varchar organization_id FK
+    }
+
+    account_company {
+        int id PK
+        varchar tin
+        varchar name
+        varchar company_type
+        varchar status
+        boolean verified
+        int author_id FK
+    }
+
+    account_usercompany {
+        int id PK
+        int user_id FK
+        int company_id FK
+        varchar role
+    }
+
+    %% ===== CORE MODULE =====
+    core_event {
+        int id PK
+        jsonb title
+        varchar status
+        varchar event_type
+        timestamp datetime_start
+        int author_id FK
+        int company_id FK
+    }
+
+    core_eventparticipant {
+        int id PK
+        varchar full_name
+        varchar status
+        int event_id FK
+        int author_id FK
+    }
+
+    core_vacancy {
+        int id PK
+        jsonb title
+        varchar status
+        varchar vacancy_type
+        int salary_min
+        int salary_max
+        int author_id FK
+        int company_id FK
+    }
+
+    core_vacancycandidate {
+        int id PK
+        varchar status
+        int vacancy_id FK
+        int author_id FK
+    }
+
+    core_blog {
+        int id PK
+        jsonb title
+        jsonb content
+        varchar status
+        int author_id FK
+        int category_id FK
+    }
+
+    core_category {
+        int id PK
+        jsonb name
+        varchar slug
+    }
+
+    core_techtask {
+        int id PK
+        jsonb title
+        varchar status
+        int author_id FK
+    }
+
+    core_techtasksolution {
+        int id PK
+        varchar status
+        int tech_task_id FK
+        int author_id FK
+    }
+
+    core_comment {
+        int id PK
+        text message
+        varchar source
+        int user_id FK
+        int parent_id FK
+    }
+
+    core_organization {
+        varchar code PK
+        jsonb name
+        boolean active
+    }
+
+    %% ===== SERVICE MODULE =====
+    service_service {
+        varchar code PK
+        jsonb data
+        varchar organization_id FK
+        int hub_form_id FK
+    }
+
+    service_servicerequest {
+        int id PK
+        varchar status
+        varchar service_id FK
+        int author_id FK
+        int company_id FK
+        int hub_form_data_id FK
+    }
+
+    service_hubform {
+        int id PK
+        jsonb data
+        varchar organization_id FK
+    }
+
+    service_hubformdata {
+        int id PK
+        jsonb data
+        int hub_form_id FK
+    }
+
+    service_expertise {
+        int id PK
+        jsonb data
+        int service_request_id FK
+        int user_id FK
+    }
+
+    %% ===== BOOKING MODULE =====
+    booking_room {
+        int id PK
+        varchar name
+        int floor
+        int max_people
+    }
+
+    booking_booking {
+        int id PK
+        varchar status
+        timestamp start
+        timestamp end
+        int room_id FK
+        int author_id FK
+    }
+
+    %% ===== TECHORDA MODULE =====
+    techorda_school {
+        int id PK
+        jsonb data
+        int author_id FK
+        int company_id FK
+    }
+
+    techorda_course {
+        int id PK
+        jsonb data
+        int school_id FK
+        int flow_id FK
+    }
+
+    techorda_flow {
+        int id PK
+        jsonb data
+    }
+
+    %% ===== LANDING MODULE =====
+    landing_page {
+        int id PK
+        jsonb data
+        int author_id FK
+        varchar organization_id FK
+    }
+
+    landing_section {
+        int id PK
+        jsonb data
+        int page_id FK
+    }
+
+    %% ===== RELATIONSHIPS =====
+    account_user ||--o{ account_usercompany : "belongs to"
+    account_company ||--o{ account_usercompany : "has members"
+    account_user }o--|| account_company : "primary company"
+    account_user }o--|| core_organization : "organization"
+
+    account_user ||--o{ core_event : "creates"
+    account_company ||--o{ core_event : "hosts"
+    core_event ||--o{ core_eventparticipant : "has"
+    account_user ||--o{ core_eventparticipant : "registers"
+
+    account_user ||--o{ core_vacancy : "posts"
+    account_company ||--o{ core_vacancy : "has"
+    core_vacancy ||--o{ core_vacancycandidate : "has"
+    account_user ||--o{ core_vacancycandidate : "applies"
+
+    account_user ||--o{ core_blog : "writes"
+    core_category ||--o{ core_blog : "contains"
+
+    account_user ||--o{ core_techtask : "creates"
+    core_techtask ||--o{ core_techtasksolution : "has"
+    account_user ||--o{ core_techtasksolution : "submits"
+
+    account_user ||--o{ core_comment : "writes"
+    core_comment ||--o{ core_comment : "replies to"
+
+    core_organization ||--o{ service_service : "provides"
+    service_service ||--o{ service_servicerequest : "has"
+    account_user ||--o{ service_servicerequest : "submits"
+    account_company ||--o{ service_servicerequest : "for"
+    service_hubform ||--o{ service_hubformdata : "filled as"
+    service_servicerequest }o--|| service_hubformdata : "form data"
+    service_servicerequest ||--o{ service_expertise : "reviewed by"
+    account_user ||--o{ service_expertise : "expert"
+
+    booking_room ||--o{ booking_booking : "booked"
+    account_user ||--o{ booking_booking : "books"
+
+    techorda_school ||--o{ techorda_course : "offers"
+    techorda_flow ||--o{ techorda_course : "in flow"
+    account_company ||--o{ techorda_school : "runs"
+
+    core_organization ||--o{ landing_page : "owns"
+    landing_page ||--o{ landing_section : "contains"
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            er: {
+                layoutDirection: 'TB',
+                minEntityWidth: 100,
+                minEntityHeight: 75,
+                entityPadding: 15
+            }
+        });
+    </script>
+</body>
+</html>
