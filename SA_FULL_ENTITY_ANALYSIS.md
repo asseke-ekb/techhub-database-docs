@@ -19,165 +19,165 @@
 
 ## 1. Сводная таблица всех сущностей
 
-| № | Таблица | Модуль | Тип | Записей | PK | FK | Описание |
-|---|---------|--------|-----|---------|----|----|----------|
-| 1 | `account_activation` | account | Транзакционная | 1,810 | - | 1 | Коды активации для подтверждения email/телефона |
-| 2 | `account_certificate` | account | Транзакционная | 1 | - | 1 | Сертификаты и достижения пользователя |
-| 3 | `account_company` | account | Основная | 6,639 | - | 1 | Компания (юр.лицо или ИП) - резидент платформы |
-| 4 | `account_complaint` | account | Транзакционная | 20 | - | 3 | Жалобы на пользователей или компании |
-| 5 | `account_contactpress` | account | Транзакционная | 0 | - | 3 | Контакты для прессы |
-| 6 | `account_contactrequest` | account | Транзакционная | 0 | - | 2 | Запросы на контакт |
-| 7 | `account_course` | account | Транзакционная | 1 | - | 1 | Пройденные курсы пользователя |
-| 8 | `account_education` | account | Транзакционная | 1 | - | 1 | Образование пользователя |
-| 9 | `account_emaildigest` | account | Транзакционная | 31,474 | - | 0 | Подписки на email-рассылки |
-| 10 | `account_experience` | account | Транзакционная | 0 | - | 2 | Опыт работы пользователя |
-| 11 | `account_user` | account | Основная | 54,063 | - | 2 | Пользователь системы - основная сущность для аутентификации и авторизации |
-| 12 | `account_user_groups` | account | Связующая | 109 | - | 2 | Связь пользователей с группами Django |
-| 13 | `account_user_user_permissions` | account | Связующая | 2,289 | - | 2 | Индивидуальные права пользователей |
-| 14 | `account_usercompany` | account | Связующая | 4,536 | - | 2 | Связь пользователя с компанией (M:N) с указанием роли |
-| 15 | `account_usercompanyinvitation` | account | Транзакционная | 2 | - | 3 | Приглашения в компанию |
-| 16 | `account_usercompanyrequest` | account | Транзакционная | 254 | - | 2 | Запросы на вступление в компанию |
-| 17 | `admin_honeypot_loginattempt` | admin | Лог | 69,000 | - | 0 | Попытки входа в honeypot |
-| 18 | `astanahub_shared_contextdata` | astanahub | Транзакционная | 0 | - | 0 | Контекстные данные AstanaHub |
-| 19 | `astanahub_shared_seodata` | astanahub | Транзакционная | 0 | - | 0 | SEO данные AstanaHub |
-| 20 | `astanahub_shared_smslog` | astanahub | Лог | 651 | - | 0 | SMS лог AstanaHub |
-| 21 | `auth_group` | auth | Справочник | 11 | - | 0 | Группа пользователей Django |
-| 22 | `auth_group_permissions` | auth | Связующая | 1,114 | - | 2 | Разрешения группы |
-| 23 | `auth_permission` | auth | Справочник | 625 | - | 1 | Разрешение Django |
-| 24 | `authtoken_token` | authtoken | Транзакционная | 1,138 | - | 1 | API токен пользователя |
-| 25 | `awsdjangoses_awsblacklist` | awsdjangoses | Транзакционная | 200 | - | 0 | Чёрный список AWS SES |
-| 26 | `booking_booking` | booking | Основная | 8,673 | - | 3 | Бронирование комнаты |
-| 27 | `booking_bookingstatus` | booking | Транзакционная | 8,691 | - | 1 | История статусов бронирования |
-| 28 | `booking_room` | booking | Справочник | 16 | - | 0 | Комната для бронирования |
-| 29 | `community_companyfollow` | community | Транзакционная | 3 | - | 2 | Подписка на компанию |
-| 30 | `community_userfollow` | community | Транзакционная | 18 | - | 2 | Подписка на пользователя |
-| 31 | `core_actionlog` | core | Лог | 124,987 | - | 1 | Лог действий пользователей |
-| 32 | `core_article` | core | Основная | 83 | - | 2 | Официальная статья платформы |
-| 33 | `core_banner` | core | Транзакционная | 27 | - | 0 | Баннер на сайте |
-| 34 | `core_blog` | core | Основная | 1,801 | - | 3 | Блог-пост пользователя или компании |
-| 35 | `core_category` | core | Справочник | 14 | - | 1 | Категория контента |
-| 36 | `core_city` | core | Справочник | 16 | - | 1 | Справочник городов |
-| 37 | `core_comment` | core | Транзакционная | 2,585 | - | 2 | Комментарий (полиморфный - к любой сущности) |
-| 38 | `core_country` | core | Справочник | 1 | - | 0 | Справочник стран |
-| 39 | `core_discussion` | core | Транзакционная | 157 | - | 2 | Обсуждение/дискуссия |
-| 40 | `core_discussionvote` | core | Транзакционная | 335 | - | 2 | Голос в обсуждении |
-| 41 | `core_elabsannouncement` | core | Транзакционная | 70 | - | 1 | Объявление E-Labs |
-| 42 | `core_event` | core | Основная | 1,459 | - | 3 | Событие/мероприятие |
-| 43 | `core_eventparticipant` | core | Транзакционная | 864 | - | 2 | Участник события |
-| 44 | `core_faq` | core | Справочник | 7 | - | 0 | Раздел FAQ |
-| 45 | `core_faqitem` | core | Транзакционная | 46 | - | 1 | Вопрос-ответ в FAQ |
-| 46 | `core_feed` | core | Транзакционная | 4,789 | - | 6 | Лента новостей (агрегатор контента) |
-| 47 | `core_floordata` | core | Транзакционная | 16 | - | 0 | Данные этажа здания |
-| 48 | `core_infrastructure` | core | Основная | 504 | - | 4 | Инфраструктурный объект |
-| 49 | `core_infrastructureimage` | core | Транзакционная | 397 | - | 2 | Изображение инфраструктуры |
-| 50 | `core_infrastructurerequest` | core | Транзакционная | 37 | - | 2 | Заявка на инфраструктуру |
-| 51 | `core_notification` | core | Транзакционная | 1,233 | - | 1 | Уведомление пользователю |
-| 52 | `core_organization` | core | Справочник | 45 | - | 0 | Организация-партнёр платформы (справочник) |
-| 53 | `core_techtask` | core | Основная | 247 | - | 1 | Техническое задание на разработку |
-| 54 | `core_techtasksolution` | core | Транзакционная | 232 | - | 2 | Решение технического задания |
-| 55 | `core_vacancy` | core | Основная | 1,205 | - | 3 | Вакансия от компании |
-| 56 | `core_vacancycandidate` | core | Транзакционная | 5,344 | - | 2 | Кандидат на вакансию |
-| 57 | `core_vacancycandidate_certificates` | core | Связующая | 192 | - | 0 | Сертификаты кандидата |
-| 58 | `django_admin_log` | django | Лог | 42,696 | - | 2 | Лог админ-панели |
-| 59 | `django_content_type` | django | Справочник | 155 | - | 0 | Тип контента Django |
-| 60 | `django_dramatiq_task` | django | Транзакционная | 0 | - | 0 | Фоновые задачи Dramatiq |
-| 61 | `django_migrations` | django | Транзакционная | 819 | - | 0 | История миграций |
-| 62 | `django_session` | django | Транзакционная | 0 | - | 0 | Сессии Django |
-| 63 | `explorer_query` | explorer | Транзакционная | 6 | - | 1 | Сохранённый SQL запрос |
-| 64 | `explorer_queryfavorite` | explorer | Транзакционная | 0 | - | 2 | Избранный SQL запрос |
-| 65 | `explorer_querylog` | explorer | Лог | 1,129 | - | 2 | Лог выполнения запросов |
-| 66 | `hub_cache_table` | hub | Транзакционная | 63 | - | 0 | Кэш-таблица |
-| 67 | `journeymap_companystate` | journeymap | Транзакционная | 0 | - | 2 | Состояние компании на карте |
-| 68 | `journeymap_journeymap` | journeymap | Основная | 0 | - | 0 | Карта развития |
-| 69 | `journeymap_question` | journeymap | Транзакционная | 0 | - | 1 | Вопрос в задаче |
-| 70 | `journeymap_step` | journeymap | Транзакционная | 0 | - | 1 | Шаг карты развития |
-| 71 | `journeymap_step_next_steps` | journeymap | Связующая | 0 | - | 2 | Связи между шагами |
-| 72 | `journeymap_task` | journeymap | Транзакционная | 0 | - | 1 | Задача в шаге |
-| 73 | `journeymap_userstate` | journeymap | Транзакционная | 0 | - | 2 | Состояние пользователя на карте |
-| 74 | `landing_component` | landing | Транзакционная | 2,790 | - | 1 | Компонент секции |
-| 75 | `landing_landing` | landing | Транзакционная | 8 | - | 0 | Лендинг (устаревший) |
-| 76 | `landing_page` | landing | Основная | 562 | - | 2 | Страница CMS |
-| 77 | `landing_pagemediafile` | landing | Транзакционная | 18,517 | - | 2 | Медиафайл страницы |
-| 78 | `landing_section` | landing | Транзакционная | 560 | - | 1 | Секция страницы |
-| 79 | `matchmaking_match` | matchmaking | Транзакционная | 31 | - | 2 | Мэтч между пользователями |
-| 80 | `matchmaking_profile` | matchmaking | Транзакционная | 19 | - | 1 | Профиль для нетворкинга |
-| 81 | `niokr_niokrnotification` | niokr | Транзакционная | 3 | - | 0 | Уведомление НИОКР |
-| 82 | `niokr_niokrnotification_projects` | niokr | Связующая | 2 | - | 2 | Связь уведомление-проект |
-| 83 | `niokr_niokrproject` | niokr | Основная | 1 | - | 0 | Проект НИОКР |
-| 84 | `niokr_niokrprojectexecutor` | niokr | Транзакционная | 1 | - | 0 | Исполнитель проекта НИОКР |
-| 85 | `niokr_niokrprojectexecutor_projects` | niokr | Связующая | 1 | - | 2 | Связь исполнитель-проект |
-| 86 | `oauth2_provider_accesstoken` | oauth2 | Транзакционная | 9 | - | 4 | OAuth2 access token |
-| 87 | `oauth2_provider_application` | oauth2 | Транзакционная | 8 | - | 1 | OAuth2 приложение |
-| 88 | `oauth2_provider_grant` | oauth2 | Транзакционная | 1,037 | - | 2 | OAuth2 grant |
-| 89 | `oauth2_provider_idtoken` | oauth2 | Транзакционная | 0 | - | 2 | OAuth2 ID token |
-| 90 | `oauth2_provider_refreshtoken` | oauth2 | Транзакционная | 0 | - | 3 | OAuth2 refresh token |
-| 91 | `reversion_revision` | reversion | Транзакционная | 19,559 | - | 1 | Ревизия объекта |
-| 92 | `reversion_version` | reversion | Транзакционная | 9,281 | - | 2 | Версия объекта |
-| 93 | `search_search` | search | Транзакционная | 7,607 | - | 0 | Поисковый запрос |
-| 94 | `service_amolog` | service | Лог | 0 | - | 1 | Лог интеграции с AmoCRM |
-| 95 | `service_boxstorage` | service | Транзакционная | 691 | - | 0 | Хранилище файлов |
-| 96 | `service_documentologlog` | service | Лог | 1,117 | - | 0 | Лог интеграции с Documentolog |
-| 97 | `service_expertdocument` | service | Транзакционная | 0 | - | 2 | Документ от эксперта |
-| 98 | `service_expertise` | service | Транзакционная | 787 | - | 2 | Экспертиза заявки |
-| 99 | `service_expertisegroup` | service | Транзакционная | 13 | - | 1 | Группа экспертов для услуги |
-| 100 | `service_expertisegroup_users` | service | Связующая | 25 | - | 2 | Эксперты в группе |
-| 101 | `service_externaldocument` | service | Транзакционная | 195 | - | 1 | Внешний документ заявки |
-| 102 | `service_externalhooklog` | service | Лог | 2,092 | - | 2 | Лог внешних webhook |
-| 103 | `service_extradocument` | service | Транзакционная | 101 | - | 2 | Дополнительный документ |
-| 104 | `service_guppurchaseapplication` | service | Транзакционная | 15 | - | 2 | Заявка на закупку ГУП |
-| 105 | `service_guppurchaseplan` | service | Транзакционная | 32 | - | 2 | План закупок ГУП |
-| 106 | `service_gupreport` | service | Транзакционная | 267 | - | 3 | Отчёт ГУП |
-| 107 | `service_hubform` | service | Форма | 282 | - | 1 | Шаблон формы для заявки |
-| 108 | `service_hubformdata` | service | Данные формы | 61,635 | - | 1 | Заполненные данные формы |
-| 109 | `service_hubformfield` | service | Форма | 6,603 | - | 1 | Поле формы |
-| 110 | `service_hubformstep` | service | Форма | 569 | - | 1 | Шаг формы |
-| 111 | `service_pitchinggrade` | service | Транзакционная | 1,538 | - | 2 | Оценка питчинга |
-| 112 | `service_protocol` | service | Транзакционная | 104 | - | 1 | Протокол комиссии |
-| 113 | `service_protocol_accepted` | service | Связующая | 467 | - | 2 | Одобренные заявки в протоколе |
-| 114 | `service_protocol_rejected` | service | Связующая | 606 | - | 2 | Отклонённые заявки в протоколе |
-| 115 | `service_report` | service | Транзакционная | 13,110 | - | 2 | Отчёт по заявке |
-| 116 | `service_seedmoneyreport` | service | Транзакционная | 333 | - | 3 | Отчёт по гранту Seed Money |
-| 117 | `service_service` | service | Справочник | 310 | - | 4 | Услуга/сервис платформы (справочник) |
-| 118 | `service_service_users` | service | Связующая | 906 | - | 2 | Менеджеры услуги |
-| 119 | `service_servicenote` | service | Транзакционная | 2 | - | 2 | Заметка к услуге |
-| 120 | `service_servicerequest` | service | Основная | 56,322 | - | 8 | Заявка на услугу |
-| 121 | `service_servicerequestbpstatus` | service | Транзакционная | 82,810 | - | 2 | Статус бизнес-процесса заявки |
-| 122 | `service_servicerequestlog` | service | Лог | 4,571 | - | 2 | Лог изменений заявки |
-| 123 | `service_servicerequeststatus` | service | Транзакционная | 2,031 | - | 2 | История статусов заявки |
-| 124 | `service_techordareport` | service | Транзакционная | 503 | - | 2 | Отчёт TechOrda |
-| 125 | `service_techordareportstudent` | service | Транзакционная | 4 | - | 2 | Студент в отчёте TechOrda |
-| 126 | `service_techordastudent` | service | Транзакционная | 3,307 | - | 0 | Студент TechOrda |
-| 127 | `service_vote` | service | Транзакционная | 12,945 | - | 3 | Голос эксперта по заявке |
-| 128 | `shared_contextdata` | shared | Транзакционная | 243 | - | 0 | Контекстные данные |
-| 129 | `shared_largecache` | shared | Транзакционная | 2 | - | 0 | Кэш больших объектов |
-| 130 | `shared_mediafile` | shared | Транзакционная | 50,936 | - | 1 | Медиафайл (публичный) |
-| 131 | `shared_protectedmediafile` | shared | Транзакционная | 92,960 | - | 1 | Медиафайл (защищённый) |
-| 132 | `shared_seodata` | shared | Транзакционная | 97 | - | 0 | SEO данные страницы |
-| 133 | `shared_smslog` | shared | Лог | 0 | - | 0 | Лог SMS сообщений |
-| 134 | `silk_profile` | silk | Транзакционная | 0 | - | 1 | Профиль производительности |
-| 135 | `silk_profile_queries` | silk | Связующая | 0 | - | 2 | Связь профиль-запросы |
-| 136 | `silk_request` | silk | Транзакционная | 73 | - | 0 | Профилирование запроса |
-| 137 | `silk_response` | silk | Транзакционная | 73 | - | 1 | Профилирование ответа |
-| 138 | `silk_sqlquery` | silk | Транзакционная | 571 | - | 1 | Профилирование SQL |
-| 139 | `social_auth_association` | social | Транзакционная | 0 | - | 0 | OAuth ассоциация |
-| 140 | `social_auth_code` | social | Транзакционная | 0 | - | 0 | OAuth код |
-| 141 | `social_auth_nonce` | social | Транзакционная | 0 | - | 0 | OAuth nonce |
-| 142 | `social_auth_partial` | social | Транзакционная | 0 | - | 0 | OAuth частичные данные |
-| 143 | `social_auth_usersocialauth` | social | Транзакционная | 19,505 | - | 1 | OAuth привязка (Google и др.) |
-| 144 | `techorda_applicationform` | techorda | Форма | 19 | - | 3 | Форма заявки на обучение |
-| 145 | `techorda_assessment` | techorda | Транзакционная | 45 | - | 0 | Оценка/тестирование |
-| 146 | `techorda_course` | techorda | Основная | 203 | - | 2 | Курс обучения |
-| 147 | `techorda_courseapplication` | techorda | Транзакционная | 15 | - | 3 | Заявка на курс |
-| 148 | `techorda_coursefavorite` | techorda | Транзакционная | 16 | - | 2 | Избранный курс пользователя |
-| 149 | `techorda_flow` | techorda | Справочник | 4 | - | 0 | Поток обучения (набор) |
-| 150 | `techorda_school` | techorda | Основная | 82 | - | 2 | Школа/провайдер обучения |
-| 151 | `thumbnail_kvstore` | thumbnail | Транзакционная | 230,644 | - | 0 | Кэш превью изображений |
-| 152 | `user_sessions_session` | user | Транзакционная | 2,952,046 | - | 1 | Расширенная сессия пользователя |
-| 153 | `waffle_flag` | waffle | Справочник | 56 | - | 0 | Feature flag |
-| 154 | `waffle_flag_groups` | waffle | Связующая | 2 | - | 2 | Feature flag для групп |
-| 155 | `waffle_flag_users` | waffle | Связующая | 24 | - | 2 | Feature flag для пользователей |
-| 156 | `waffle_sample` | waffle | Транзакционная | 0 | - | 0 | Семплирование feature |
-| 157 | `waffle_switch` | waffle | Справочник | 44 | - | 0 | Переключатель feature |
+| № | Таблица | Модуль | Записей | PK | FK | Описание |
+|---|---------|--------|---------|----|----|----------|
+| 1 | `account_activation` | account | 1,810 | id | 1 | Коды активации для подтверждения email/телефона |
+| 2 | `account_certificate` | account | 1 | id | 1 | Сертификаты и достижения пользователя |
+| 3 | `account_company` | account | 6,639 | id | 1 | Компания (юр.лицо или ИП) - резидент платформы |
+| 4 | `account_complaint` | account | 20 | id | 3 | Жалобы на пользователей или компании |
+| 5 | `account_contactpress` | account | 0 | id | 3 | Контакты для прессы |
+| 6 | `account_contactrequest` | account | 0 | id | 2 | Запросы на контакт |
+| 7 | `account_course` | account | 1 | id | 1 | Пройденные курсы пользователя |
+| 8 | `account_education` | account | 1 | id | 1 | Образование пользователя |
+| 9 | `account_emaildigest` | account | 31,474 | id | 0 | Подписки на email-рассылки |
+| 10 | `account_experience` | account | 0 | id | 2 | Опыт работы пользователя |
+| 11 | `account_user` | account | 54,063 | id | 2 | Пользователь системы - основная сущность для аутентификации и авторизации |
+| 12 | `account_user_groups` | account | 109 | id | 2 | Связь пользователей с группами Django |
+| 13 | `account_user_user_permissions` | account | 2,289 | id | 2 | Индивидуальные права пользователей |
+| 14 | `account_usercompany` | account | 4,536 | id | 2 | Связь пользователя с компанией (M:N) с указанием роли |
+| 15 | `account_usercompanyinvitation` | account | 2 | id | 3 | Приглашения в компанию |
+| 16 | `account_usercompanyrequest` | account | 254 | id | 2 | Запросы на вступление в компанию |
+| 17 | `admin_honeypot_loginattempt` | admin | 69,000 | id | 0 | Попытки входа в honeypot |
+| 18 | `astanahub_shared_contextdata` | astanahub | 0 | id | 0 | Контекстные данные AstanaHub |
+| 19 | `astanahub_shared_seodata` | astanahub | 0 | id | 0 | SEO данные AstanaHub |
+| 20 | `astanahub_shared_smslog` | astanahub | 651 | id | 0 | SMS лог AstanaHub |
+| 21 | `auth_group` | auth | 11 | id | 0 | Группа пользователей Django |
+| 22 | `auth_group_permissions` | auth | 1,114 | id | 2 | Разрешения группы |
+| 23 | `auth_permission` | auth | 625 | id | 1 | Разрешение Django |
+| 24 | `authtoken_token` | authtoken | 1,138 | id | 1 | API токен пользователя |
+| 25 | `awsdjangoses_awsblacklist` | awsdjangoses | 200 | id | 0 | Чёрный список AWS SES |
+| 26 | `booking_booking` | booking | 8,673 | id | 3 | Бронирование комнаты |
+| 27 | `booking_bookingstatus` | booking | 8,691 | id | 1 | История статусов бронирования |
+| 28 | `booking_room` | booking | 16 | id | 0 | Комната для бронирования |
+| 29 | `community_companyfollow` | community | 3 | id | 2 | Подписка на компанию |
+| 30 | `community_userfollow` | community | 18 | id | 2 | Подписка на пользователя |
+| 31 | `core_actionlog` | core | 124,987 | id | 1 | Лог действий пользователей |
+| 32 | `core_article` | core | 83 | id | 2 | Официальная статья платформы |
+| 33 | `core_banner` | core | 27 | id | 0 | Баннер на сайте |
+| 34 | `core_blog` | core | 1,801 | id | 3 | Блог-пост пользователя или компании |
+| 35 | `core_category` | core | 14 | id | 1 | Категория контента |
+| 36 | `core_city` | core | 16 | id | 1 | Справочник городов |
+| 37 | `core_comment` | core | 2,585 | id | 2 | Комментарий (полиморфный - к любой сущности) |
+| 38 | `core_country` | core | 1 | id | 0 | Справочник стран |
+| 39 | `core_discussion` | core | 157 | id | 2 | Обсуждение/дискуссия |
+| 40 | `core_discussionvote` | core | 335 | id | 2 | Голос в обсуждении |
+| 41 | `core_elabsannouncement` | core | 70 | id | 1 | Объявление E-Labs |
+| 42 | `core_event` | core | 1,459 | id | 3 | Событие/мероприятие |
+| 43 | `core_eventparticipant` | core | 864 | id | 2 | Участник события |
+| 44 | `core_faq` | core | 7 | id | 0 | Раздел FAQ |
+| 45 | `core_faqitem` | core | 46 | id | 1 | Вопрос-ответ в FAQ |
+| 46 | `core_feed` | core | 4,789 | id | 6 | Лента новостей (агрегатор контента) |
+| 47 | `core_floordata` | core | 16 | id | 0 | Данные этажа здания |
+| 48 | `core_infrastructure` | core | 504 | id | 4 | Инфраструктурный объект |
+| 49 | `core_infrastructureimage` | core | 397 | id | 2 | Изображение инфраструктуры |
+| 50 | `core_infrastructurerequest` | core | 37 | id | 2 | Заявка на инфраструктуру |
+| 51 | `core_notification` | core | 1,233 | id | 1 | Уведомление пользователю |
+| 52 | `core_organization` | core | 45 | id | 0 | Организация-партнёр платформы (справочник) |
+| 53 | `core_techtask` | core | 247 | id | 1 | Техническое задание на разработку |
+| 54 | `core_techtasksolution` | core | 232 | id | 2 | Решение технического задания |
+| 55 | `core_vacancy` | core | 1,205 | id | 3 | Вакансия от компании |
+| 56 | `core_vacancycandidate` | core | 5,344 | id | 2 | Кандидат на вакансию |
+| 57 | `core_vacancycandidate_certificates` | core | 192 | id | 0 | Сертификаты кандидата |
+| 58 | `django_admin_log` | django | 42,696 | id | 2 | Лог админ-панели |
+| 59 | `django_content_type` | django | 155 | id | 0 | Тип контента Django |
+| 60 | `django_dramatiq_task` | django | 0 | id | 0 | Фоновые задачи Dramatiq |
+| 61 | `django_migrations` | django | 819 | id | 0 | История миграций |
+| 62 | `django_session` | django | 0 | id | 0 | Сессии Django |
+| 63 | `explorer_query` | explorer | 6 | id | 1 | Сохранённый SQL запрос |
+| 64 | `explorer_queryfavorite` | explorer | 0 | id | 2 | Избранный SQL запрос |
+| 65 | `explorer_querylog` | explorer | 1,129 | id | 2 | Лог выполнения запросов |
+| 66 | `hub_cache_table` | hub | 63 | id | 0 | Кэш-таблица |
+| 67 | `journeymap_companystate` | journeymap | 0 | id | 2 | Состояние компании на карте |
+| 68 | `journeymap_journeymap` | journeymap | 0 | id | 0 | Карта развития |
+| 69 | `journeymap_question` | journeymap | 0 | id | 1 | Вопрос в задаче |
+| 70 | `journeymap_step` | journeymap | 0 | id | 1 | Шаг карты развития |
+| 71 | `journeymap_step_next_steps` | journeymap | 0 | id | 2 | Связи между шагами |
+| 72 | `journeymap_task` | journeymap | 0 | id | 1 | Задача в шаге |
+| 73 | `journeymap_userstate` | journeymap | 0 | id | 2 | Состояние пользователя на карте |
+| 74 | `landing_component` | landing | 2,790 | id | 1 | Компонент секции |
+| 75 | `landing_landing` | landing | 8 | id | 0 | Лендинг (устаревший) |
+| 76 | `landing_page` | landing | 562 | id | 2 | Страница CMS |
+| 77 | `landing_pagemediafile` | landing | 18,517 | id | 2 | Медиафайл страницы |
+| 78 | `landing_section` | landing | 560 | id | 1 | Секция страницы |
+| 79 | `matchmaking_match` | matchmaking | 31 | id | 2 | Мэтч между пользователями |
+| 80 | `matchmaking_profile` | matchmaking | 19 | id | 1 | Профиль для нетворкинга |
+| 81 | `niokr_niokrnotification` | niokr | 3 | id | 0 | Уведомление НИОКР |
+| 82 | `niokr_niokrnotification_projects` | niokr | 2 | id | 2 | Связь уведомление-проект |
+| 83 | `niokr_niokrproject` | niokr | 1 | id | 0 | Проект НИОКР |
+| 84 | `niokr_niokrprojectexecutor` | niokr | 1 | id | 0 | Исполнитель проекта НИОКР |
+| 85 | `niokr_niokrprojectexecutor_projects` | niokr | 1 | id | 2 | Связь исполнитель-проект |
+| 86 | `oauth2_provider_accesstoken` | oauth2 | 9 | id | 4 | OAuth2 access token |
+| 87 | `oauth2_provider_application` | oauth2 | 8 | id | 1 | OAuth2 приложение |
+| 88 | `oauth2_provider_grant` | oauth2 | 1,037 | id | 2 | OAuth2 grant |
+| 89 | `oauth2_provider_idtoken` | oauth2 | 0 | id | 2 | OAuth2 ID token |
+| 90 | `oauth2_provider_refreshtoken` | oauth2 | 0 | id | 3 | OAuth2 refresh token |
+| 91 | `reversion_revision` | reversion | 19,559 | id | 1 | Ревизия объекта |
+| 92 | `reversion_version` | reversion | 9,281 | id | 2 | Версия объекта |
+| 93 | `search_search` | search | 7,607 | id | 0 | Поисковый запрос |
+| 94 | `service_amolog` | service | 0 | id | 1 | Лог интеграции с AmoCRM |
+| 95 | `service_boxstorage` | service | 691 | id | 0 | Хранилище файлов |
+| 96 | `service_documentologlog` | service | 1,117 | id | 0 | Лог интеграции с Documentolog |
+| 97 | `service_expertdocument` | service | 0 | id | 2 | Документ от эксперта |
+| 98 | `service_expertise` | service | 787 | id | 2 | Экспертиза заявки |
+| 99 | `service_expertisegroup` | service | 13 | id | 1 | Группа экспертов для услуги |
+| 100 | `service_expertisegroup_users` | service | 25 | id | 2 | Эксперты в группе |
+| 101 | `service_externaldocument` | service | 195 | id | 1 | Внешний документ заявки |
+| 102 | `service_externalhooklog` | service | 2,092 | id | 2 | Лог внешних webhook |
+| 103 | `service_extradocument` | service | 101 | id | 2 | Дополнительный документ |
+| 104 | `service_guppurchaseapplication` | service | 15 | id | 2 | Заявка на закупку ГУП |
+| 105 | `service_guppurchaseplan` | service | 32 | id | 2 | План закупок ГУП |
+| 106 | `service_gupreport` | service | 267 | id | 3 | Отчёт ГУП |
+| 107 | `service_hubform` | service | 282 | id | 1 | Шаблон формы для заявки |
+| 108 | `service_hubformdata` | service | 61,635 | id | 1 | Заполненные данные формы |
+| 109 | `service_hubformfield` | service | 6,603 | id | 1 | Поле формы |
+| 110 | `service_hubformstep` | service | 569 | id | 1 | Шаг формы |
+| 111 | `service_pitchinggrade` | service | 1,538 | id | 2 | Оценка питчинга |
+| 112 | `service_protocol` | service | 104 | id | 1 | Протокол комиссии |
+| 113 | `service_protocol_accepted` | service | 467 | id | 2 | Одобренные заявки в протоколе |
+| 114 | `service_protocol_rejected` | service | 606 | id | 2 | Отклонённые заявки в протоколе |
+| 115 | `service_report` | service | 13,110 | id | 2 | Отчёт по заявке |
+| 116 | `service_seedmoneyreport` | service | 333 | id | 3 | Отчёт по гранту Seed Money |
+| 117 | `service_service` | service | 310 | id | 4 | Услуга/сервис платформы (справочник) |
+| 118 | `service_service_users` | service | 906 | id | 2 | Менеджеры услуги |
+| 119 | `service_servicenote` | service | 2 | id | 2 | Заметка к услуге |
+| 120 | `service_servicerequest` | service | 56,322 | id | 8 | Заявка на услугу |
+| 121 | `service_servicerequestbpstatus` | service | 82,810 | id | 2 | Статус бизнес-процесса заявки |
+| 122 | `service_servicerequestlog` | service | 4,571 | id | 2 | Лог изменений заявки |
+| 123 | `service_servicerequeststatus` | service | 2,031 | id | 2 | История статусов заявки |
+| 124 | `service_techordareport` | service | 503 | id | 2 | Отчёт TechOrda |
+| 125 | `service_techordareportstudent` | service | 4 | id | 2 | Студент в отчёте TechOrda |
+| 126 | `service_techordastudent` | service | 3,307 | id | 0 | Студент TechOrda |
+| 127 | `service_vote` | service | 12,945 | id | 3 | Голос эксперта по заявке |
+| 128 | `shared_contextdata` | shared | 243 | id | 0 | Контекстные данные |
+| 129 | `shared_largecache` | shared | 2 | id | 0 | Кэш больших объектов |
+| 130 | `shared_mediafile` | shared | 50,936 | id | 1 | Медиафайл (публичный) |
+| 131 | `shared_protectedmediafile` | shared | 92,960 | id | 1 | Медиафайл (защищённый) |
+| 132 | `shared_seodata` | shared | 97 | id | 0 | SEO данные страницы |
+| 133 | `shared_smslog` | shared | 0 | id | 0 | Лог SMS сообщений |
+| 134 | `silk_profile` | silk | 0 | id | 1 | Профиль производительности |
+| 135 | `silk_profile_queries` | silk | 0 | id | 2 | Связь профиль-запросы |
+| 136 | `silk_request` | silk | 73 | id | 0 | Профилирование запроса |
+| 137 | `silk_response` | silk | 73 | id | 1 | Профилирование ответа |
+| 138 | `silk_sqlquery` | silk | 571 | id | 1 | Профилирование SQL |
+| 139 | `social_auth_association` | social | 0 | id | 0 | OAuth ассоциация |
+| 140 | `social_auth_code` | social | 0 | id | 0 | OAuth код |
+| 141 | `social_auth_nonce` | social | 0 | id | 0 | OAuth nonce |
+| 142 | `social_auth_partial` | social | 0 | id | 0 | OAuth частичные данные |
+| 143 | `social_auth_usersocialauth` | social | 19,505 | id | 1 | OAuth привязка (Google и др.) |
+| 144 | `techorda_applicationform` | techorda | 19 | id | 3 | Форма заявки на обучение |
+| 145 | `techorda_assessment` | techorda | 45 | id | 0 | Оценка/тестирование |
+| 146 | `techorda_course` | techorda | 203 | id | 2 | Курс обучения |
+| 147 | `techorda_courseapplication` | techorda | 15 | id | 3 | Заявка на курс |
+| 148 | `techorda_coursefavorite` | techorda | 16 | id | 2 | Избранный курс пользователя |
+| 149 | `techorda_flow` | techorda | 4 | id | 0 | Поток обучения (набор) |
+| 150 | `techorda_school` | techorda | 82 | id | 2 | Школа/провайдер обучения |
+| 151 | `thumbnail_kvstore` | thumbnail | 230,644 | id | 0 | Кэш превью изображений |
+| 152 | `user_sessions_session` | user | 2,952,046 | id | 1 | Расширенная сессия пользователя |
+| 153 | `waffle_flag` | waffle | 56 | id | 0 | Feature flag |
+| 154 | `waffle_flag_groups` | waffle | 2 | id | 2 | Feature flag для групп |
+| 155 | `waffle_flag_users` | waffle | 24 | id | 2 | Feature flag для пользователей |
+| 156 | `waffle_sample` | waffle | 0 | id | 0 | Семплирование feature |
+| 157 | `waffle_switch` | waffle | 44 | id | 0 | Переключатель feature |
 
 ---
 
